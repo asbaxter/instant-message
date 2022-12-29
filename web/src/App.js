@@ -1,25 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import ReactMapGL from "react-map-gl";
+import React, { useState } from 'react';
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [viewport] = useState({
+    latitude: 45.4211,
+    longitude: -75.6903,
+    width: '100vw',
+    height: '100vh',
+    zoom: 10
+  })
+
+
+  return <div>
+    <ReactMapGL 
+      {...viewport}
+      mapboxAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+      >
+        
+        markers here
+    </ReactMapGL>;
+  </div>
 }
 
 export default App;
